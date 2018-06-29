@@ -1,0 +1,13 @@
+нужно импортировать import todo_api
+
+слудующим кодом получить api 
+	api = todo_api.ToDoApi()
+
+после этого нам нужно либо зарегистрироваться либо войти (api.registration/authorizate). Если прошло без ошибок, то вернется ключ доступа, с помощью него ты сможем выполнять действия(добавить таск или изменить(указав id таска))
+
+	access_key = api.registration("login", 123456)
+	api.add_task(access_key, "make sandwich")
+	api.change_task(access_key, 0, "completed")
+
+с помощью api.get_tasks можем получить список наших тасков.
+	task_list = api.get_tasks(access_key, sort_by="bycompleted")
