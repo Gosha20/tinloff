@@ -1,6 +1,5 @@
 import datetime
 import json
-
 from task import Task
 from user import User
 
@@ -43,8 +42,7 @@ class DataBase:
 			with open(file, 'w') as f:
 				data = json.dumps(self._users,
 								  default=lambda x: x.isoformat() if isinstance(x, datetime.datetime) else x.__dict__,
-								  sort_keys=True,
-								  indent=4)
+								  sort_keys=True, indent=4)
 				f.write(data)
 		except TypeError:
 			print("not serialize obj")
