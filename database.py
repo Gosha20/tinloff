@@ -42,9 +42,9 @@ class DataBase:
 		try:
 			with open(file, 'w') as f:
 				data = json.dumps(self._users,
-				                  default=lambda x: x.isoformat() if isinstance(x, datetime.datetime) else x.__dict__,
-				                  sort_keys=True,
-				                  indent=4)
+								  default=lambda x: x.isoformat() if isinstance(x, datetime.datetime) else x.__dict__,
+								  sort_keys=True,
+								  indent=4)
 				f.write(data)
 		except TypeError:
 			print("not serialize obj")

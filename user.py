@@ -22,7 +22,11 @@ class User:
 		return sorted(self.to_do.values(), key=User.SORTED_FUNC[sort_by])
 
 	def change_task(self, task_id, status):
-		self.to_do[task_id].complete = status
+		if task_id in self.to_do:
+			self.to_do[task_id].complete = status
+			return "task is changed"
+		else:
+			return "not exist this task id"
 
 	def _get_index(self):
 		return len(self.to_do)

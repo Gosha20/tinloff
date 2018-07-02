@@ -29,7 +29,7 @@ class ToDoApi:
 			self.database.write_json()
 			return login_password
 
-	"""return task by time or/and by complete.["bytime", "bycompleted"] Example get_task(access_key, "bytime")"""
+	"""return task by time or/and by complete.["bytime", "bycompleted"] Example get_task(access_key, "bycompleted")"""
 
 	def get_tasks(self, access_key, sort_by='bycompleted'):
 		if self.database.check_access_key(access_key):
