@@ -1,7 +1,8 @@
 class User:
 	SORTED_FUNC = {
-		'bytime': lambda task: task.start_time,
-		'bycompleted': lambda task: task.complete != "completed"
+		'by_time': lambda task: task.start_time,
+		'by_completed': lambda task: task.complete != "completed",
+		'by_completed_time': lambda task: tuple((task.complete != "completed", task.start_time))
 	}
 
 	def __init__(self, name='', json_load=None):
@@ -18,7 +19,7 @@ class User:
 	def delete_task(self, task_id):
 		self.to_do.pop(task_id, None)
 
-	def get_all_tasks(self, sort_by="bycompleted"):
+	def get_all_tasks(self, sort_by="by_completed"):
 		return sorted(self.to_do.values(), key=User.SORTED_FUNC[sort_by])
 
 	def change_task(self, task_id, status):

@@ -29,9 +29,9 @@ class ToDoApi:
 			self.database.write_json()
 			return login_password
 
-	"""return task by time or/and by complete.["bytime", "bycompleted"] Example get_task(access_key, "bycompleted")"""
+	"""return task by time or/and by complete.["by_time", "by_completed"] Example get_task(access_key, "by_completed")"""
 
-	def get_tasks(self, access_key, sort_by='bycompleted'):
+	def get_tasks(self, access_key, sort_by='by_completed'):
 		if self.database.check_access_key(access_key):
 			return self.database.get_user(access_key).get_all_tasks(sort_by)
 		else:
@@ -39,9 +39,9 @@ class ToDoApi:
 
 	"""add new tasks to database"""
 
-	def add_task(self, access_key, task_title):
+	def add_task(self, access_key, task_title, start_time=datetime.now()):
 		if self.database.check_access_key(access_key):
-			task = Task(task_title, datetime.now())
+			task = Task(task_title, start_time)
 			self.database.get_user(access_key).add_task(task)
 			self.database.write_json()
 			print("task is added")

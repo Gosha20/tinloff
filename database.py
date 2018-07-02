@@ -27,9 +27,9 @@ class DataBase:
 				for log_passw, user in loads_data.items():
 					des_user = User(json_load=user)
 					temp_tasks_dict = dict()
-					for id, task in user['to_do'].items():
+					for task_id, task in user['to_do'].items():
 						des_task = Task(json_load=task)
-						temp_tasks_dict[int(id)] = des_task
+						temp_tasks_dict[int(task_id)] = des_task
 					des_user.to_do = temp_tasks_dict
 					self._users[log_passw] = des_user
 				print("loaded")
