@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>{{title}} - ToDo</title>
+  </head>
+  <body>
+      <div>
+        <a href="{{ url_for('add_task') }}">Add task</a>
+        <a href="{{ url_for('change_task') }}">Change task</a>
+        <a href="{{ url_for('get_json') }}">Get json</a>
+      </div>
+        <h1>Hello, {{user.username}}!</h1>
+        <h2>It is your todo list</h2>
+        {% for task in db %}
+    <div><p><b>{{ task}} </b></p></div>
+    {% endfor %}
+  </body>
+</html>
